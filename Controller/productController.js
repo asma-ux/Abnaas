@@ -2,9 +2,12 @@ const producModel=require('../module/productModule')
 exports.products= async(req,res)=>{
     try{
     await producModel.create(
-   req.body
-       
-    )
+   {
+    Name:"Shoose",
+    Price:90,
+    qty:9,
+    User:"614ad616ce84373762a3ace0"
+   }    )
 
     res.status(200).json({
         message:"all products",
@@ -21,7 +24,7 @@ exports.products= async(req,res)=>{
 
    exports.findproduct=async(req,res)=>{
     try{
-        const product = await producModel.find({User:req.params.id}).populate('User')
+        const product = await producModel.find({user:req.params.id}).populate('User')
     
             res.status(200).json({
                 message:"Foud",

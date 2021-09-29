@@ -1,4 +1,4 @@
-const User =require('../module/vendorModule')
+const User =require('../module/userModule')
 exports.createUser=async (req,res)=>{
     try {
     

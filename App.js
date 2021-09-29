@@ -1,12 +1,15 @@
 const Express=require('express')
-const App=Express()
 const bodyparser=require('body-parser')
-
+const cors = require('cors')
 require('dotenv').config({path:"./config.env"})
-
 require('./Server')
+const App=Express()
 App.use(bodyparser())
-
+App.use(cors())
+// App.use((req,res,next)=>
+// {console.log('hi')
+// next()}
+// )
 const userRouter=require('./Router/userRouter')
 App.use('/user',userRouter);
 
