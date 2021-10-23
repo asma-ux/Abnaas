@@ -20,7 +20,7 @@ exports.findproduct = async (req, res) => {
       .populate("User");
 
     res.status(200).json({
-      message: "Foud",
+      message: "Found",
       data: product,
     });
   } catch (e) {

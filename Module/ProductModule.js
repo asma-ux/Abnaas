@@ -4,11 +4,18 @@ const ProductSchama = mongoose.Schema({
   Name: {
     type: String,
   },
-  Price: { type: Number },
-  qty: {
+  Price: {
     type: Number,
   },
-  Categort: {
+
+  Commission: {
+    type: String,
+  },
+
+  Quantity: {
+    type: Number,
+  },
+  Category: {
     type: String,
   },
   Description: {
@@ -16,6 +23,10 @@ const ProductSchama = mongoose.Schema({
   },
 
   Image: {
+    type: String,
+  },
+
+  CompanyName: {
     type: String,
   },
 
