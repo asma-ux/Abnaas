@@ -15,9 +15,7 @@ exports.products = async (req, res) => {
 
 exports.findproduct = async (req, res) => {
   try {
-    const product = await producModel
-      .find({ user: req.params.id })
-      .populate("User");
+    const product = await producModel.find({});
 
     res.status(200).json({
       message: "Found",
@@ -37,6 +35,21 @@ exports.getfind = async (req, res) => {
       data: product,
     });
   } catch (e) {
-    console.log(e.message);
+    res.status(400).json({
+      message: e,
+    });
+  }
+};
+
+exports.deleteProduct = async (req, res) => {
+  try {
+    await Product.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      message: "deleted product",
+    });
+  } catch (e) {
+    res.status(400).json({
+      message: e,
+    });
   }
 };

@@ -39,6 +39,10 @@ const ProductSchama = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "vendorInfo",
   },
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 const ProductModule = mongoose.model("Product", ProductSchama);
