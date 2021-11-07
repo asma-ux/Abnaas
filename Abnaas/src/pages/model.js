@@ -29,29 +29,27 @@ export default function BasicModal() {
   const handleClose = () => setOpen(false);
 
   const [products, setProducts] = useState({
-    Name: '',
-    Price: '',
-    Quantity: '',
-    Category: '',
-    Description: '',
-    Image: '',
-    CompanyName: ''
+    name: '',
+    price: '',
+    quantity: '',
+    description: '',
+    commission: '',
+    image: ''
   });
 
   function save(e) {
     e.preventDefault();
+    console.log(products.image);
     const formData = new FormData();
-    formData.append('Name', products.Name);
-    formData.append('Price', products.Price);
-    formData.append('Commission', products.Commission);
-    formData.append('Quanity', products.Quantity);
-    formData.append('Category', products.Category);
-    formData.append('Description', products.Description);
-    formData.append('Image', products.Image);
-    formData.append('Company Name', products.CompanyName);
+    formData.append('name', products.name);
+    formData.append('price', products.price);
+    formData.append('quantity', products.quantity);
+    formData.append('description', products.description);
+    formData.append('commission', products.commission);
+    formData.append('image', products.image);
 
     axios
-      .post('http://localhost:8000/product', formData)
+      .post('http://localhost:8000/products', formData)
       .then((res) => console.log(res))
       .catch((e) => console.log(e.response.data.message));
   }
@@ -86,37 +84,30 @@ export default function BasicModal() {
                 id="standard"
                 label="Product Name"
                 variant="standard"
-                onChange={(e) => setProducts({ ...products, Name: e.target.value })}
-              />
-              <TextField
-                className={classes.category}
-                id="standard"
-                label=" Category"
-                variant="standard"
-                onChange={(e) => setProducts({ ...products, Category: e.target.value })}
-              />
-            </Box>
-            <Box
-              component="form"
-              sx={{
-                '& > :not(style)': { m: 3 }
-              }}
-              noValidate
-              autoComplete="off"
-            >
-              <TextField
-                className={classes.description}
-                id="Standard"
-                label="Description"
-                variant="standard"
-                onChange={(e) => setProducts({ ...products, Description: e.target.value })}
+                onChange={(e) => setProducts({ ...products, name: e.target.value })}
               />
               <TextField
                 className={classes.priceWidth}
                 id="Standard"
                 label="Price"
                 variant="standard"
-                onChange={(e) => setProducts({ ...products, Price: e.target.value })}
+                onChange={(e) => setProducts({ ...products, price: e.target.value })}
+              />
+
+              <TextField
+                className={classes.Quantity}
+                id="standard-basic"
+                label="quantity"
+                variant="standard"
+                onChange={(e) => setProducts({ ...products, quantity: e.target.value })}
+              />
+
+              <TextField
+                className={classes.description}
+                id="Standard"
+                label="Description"
+                variant="standard"
+                onChange={(e) => setProducts({ ...products, description: e.target.value })}
               />
 
               <TextField
@@ -124,40 +115,17 @@ export default function BasicModal() {
                 id="standard-basic"
                 label="Commission"
                 variant="standard"
-                onChange={(e) => setProducts({ ...products, Commission: e.target.value })}
+                onChange={(e) => setProducts({ ...products, commission: e.target.value })}
               />
-            </Box>
 
-            <Box
-              component="form"
-              sx={{
-                '& > :not(style)': { m: 3 }
-              }}
-              noValidate
-              autoComplete="off"
-            >
-              <TextField
-                className={classes.Quantity}
-                id="standard-basic"
-                label="quantity"
-                variant="standard"
-                onChange={(e) => setProducts({ ...products, CompanyName: e.target.value })}
-              />
               <TextField
                 className={classes.image}
                 type="file"
                 id="standard-basic"
                 label="upload image"
-                name="Image"
+                name="image"
                 variant="standard"
-                onChange={(e) => setProducts({ ...products, Image: e.target.files[0] })}
-              />
-              <TextField
-                className={classes.companyName}
-                id="standard-basic"
-                label="Company Name"
-                variant="standard"
-                onChange={(e) => setProducts({ ...products, CompanyName: e.target.value })}
+                onChange={(e) => setProducts({ ...products, image: e.target.files[0] })}
               />
             </Box>
 

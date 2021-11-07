@@ -6,22 +6,37 @@ require("dotenv").config({ path: "./config.env" });
 require("./Server");
 const App = Express();
 App.use(bodyparser());
-
+require("./Server");
 App.use(cors());
 // App.use((req,res,next)=>
 // {console.log('hi')
 // next()}
 // )
-const userRouter = require("./Router/userRouter");
-App.use("/user", userRouter);
+
 mongoose.connect(process.env.DB).then(() => console.log("connect"));
-const ProductRouter = require("./Router/ProductRouter");
-App.use("/product", ProductRouter);
 
-const AffiliateRouter = require("./Router/AffiliateRouter");
-App.use("/Affiliate", AffiliateRouter);
+// routes variable
+const userRouter = require("./routes/userRouter");
+const productRouter = require("./routes/ProductRouter");
+const affiliateRouter = require("./routes/AffiliateRouter");
+const vendorRouter = require("./routes/vendorRouter");
+const categoryRouter = require("./routes/categoryRouter");
+const orderRouter = require("./routes/orderRouter");
 
-const port = 8000;
-App.listen(port, () => {
-  console.log(`listing on port  ${port}`);
+// routes middleware
+App.use("/users", userRouter);
+App.use("/products", productRouter);
+App.use("/affiliate", affiliateRouter);
+App.use("/vendor", vendorRouter);
+App.use("/category", categoryRouter);
+App.use("/orders", orderRouter);
+
+App.use(Express.static("Client/build"));
+App.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "Client", "build", "index.html"));
+});
+
+const PORT = process.env.PORT;
+App.listen(PORT, () => {
+  console.log(`listing on port  ${PORT}`);
 });

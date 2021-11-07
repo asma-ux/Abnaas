@@ -3,12 +3,21 @@ import { makeStyles } from '@mui/styles';
 import { padding } from '@mui/system';
 
 const useStyles = makeStyles((theme) => ({
+  tableColor: {
+    backgroundColor: 'white'
+  },
   tableH: {
-    backgroundColor: '#e6f8ff'
+    backgroundColor: '#00e6cb'
+  },
+  deleteColor: {
+    color: 'red'
+  },
+  editColor: {
+    color: 'teal'
   },
   btnColor: {
-    color: 'black',
-    background: '#80dbff',
+    color: 'white',
+    background: '#009987',
     marginLeft: '93ch',
     marginBottom: '1ch',
     padding: '1.5ch'
@@ -46,13 +55,13 @@ const useStyles = makeStyles((theme) => ({
     width: '25ch'
   },
   image: {
-    width: '35ch'
+    width: '60ch'
   },
   Quantity: {
     width: '30ch'
   },
   companyName: {
-    width: '60ch'
+    width: '90ch'
   }
 }));
 // end od form styles

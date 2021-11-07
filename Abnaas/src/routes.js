@@ -9,6 +9,7 @@ import DashboardApp from './pages/DashboardApp';
 import Products from './pages/Products';
 import Order from './pages/Order';
 import NotFound from './pages/Page404';
+import ModelAdd from './pages/model';
 
 // ----------------------------------------------------------------------
 
@@ -22,7 +23,8 @@ export default function Router() {
         { path: 'app', element: <DashboardApp /> },
 
         { path: 'order', element: <Order /> },
-        { path: 'products', element: <Products /> }
+        { path: 'products', element: <Products /> },
+        { path: 'product/edit/:id', element: <ModelAdd /> }
       ]
     },
     {

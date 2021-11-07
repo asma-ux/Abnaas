@@ -27,12 +27,6 @@ const sidebarConfig = [
     title: 'product',
     path: '/dashboard/products',
     icon: getIcon(shoppingBagFill)
-  },
-
-  {
-    title: 'Not found',
-    path: '/404',
-    icon: getIcon(alertTriangleFill)
   }
 ];
 

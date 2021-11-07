@@ -40,12 +40,11 @@ export default function User() {
   const classes = useStyles();
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:8000/product/`).then((res) => setProducts(res.data.data));
+    axios.get(`http://localhost:8000/products`).then((res) => setProducts(res.data.product));
   }, []);
-  console.log(products);
   return (
     <>
-      <Table>
+      <Table className={classes.tableColor}>
         <TableHead>
           <TableRow className={classes.tableH}>
             <TableCell>Name</TableCell>
@@ -59,14 +58,14 @@ export default function User() {
           {products.map((product) => (
             <TableRow>
               <TableCell>{product.Name}</TableCell>
-              <TableCell>mobile</TableCell>
+              <TableCell>{product.price}</TableCell>
               <TableCell>300</TableCell>
               <TableCell>3</TableCell>
               <TableCell>%10</TableCell>
               <TableCell>Abnaas</TableCell>
               <TableCell>
-                <DeleteIcon />
-                <EditIcon />
+                <DeleteIcon className={classes.deleteColor} />
+                <EditIcon className={classes.editColor} />
               </TableCell>
             </TableRow>
           ))}

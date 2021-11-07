@@ -1,12 +1,13 @@
 import { filter } from 'lodash';
 import { Icon } from '@iconify/react';
 import { sentenceCase } from 'change-case';
-import { useState, useEffect } from 'react';
 import plusFill from '@iconify/icons-eva/plus-fill';
 import { Link as RouterLink } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import Link from '@mui/material/Link';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 // material
 import {
@@ -40,42 +41,45 @@ import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dash
 export default function User() {
   const classes = useStyles();
   const [products, setProducts] = useState([]);
+  console.log(products);
   useEffect(() => {
-    axios.get(`http://localhost:8000/product/`).then((res) => setProducts(res.data.data));
-  }, []);
+    axios.get(`http://localhost:8000/products`).then((res) => setProducts(res.data.product));
+  });
 
   function deleteProduct(id) {
-    axios.delete(`http://localhost:8000/product/${id}`).then((res) => console.log(res));
+    axios.delete(`http://localhost:8000/products/${id}`).then((res) => console.log(res));
   }
 
   console.log(products);
   return (
     <>
       <Model />
-      <Table>
+      <Table className={classes.tableColor}>
         <TableHead>
           <TableRow className={classes.tableH}>
             <TableCell>Name</TableCell>
-            <TableCell>Category</TableCell>
             <TableCell>Price</TableCell>
             <TableCell>Quantity</TableCell>
+            <TableCell>description</TableCell>
             <TableCell>Commission</TableCell>
-            <TableCell>Company Name</TableCell>
-            <TableCell>Date</TableCell>
             <TableCell>Action</TableCell>
           </TableRow>
           {products.map((product) => (
             <TableRow>
-              <TableCell>{product.Name}</TableCell>
-              <TableCell>{product._id}</TableCell>
-              <TableCell>300</TableCell>
-              <TableCell>3</TableCell>
+              <TableCell>{product.name}</TableCell>
+              <TableCell>{product.price}</TableCell>
+              <TableCell>{product.quantity}</TableCell>
+              <TableCell>{product.description}</TableCell>
               <TableCell>%10</TableCell>
-              <TableCell>Abnaas</TableCell>
-              <TableCell>Abnaas</TableCell>
+
               <TableCell>
-                <DeleteIcon onClick={() => deleteProduct(product._id)} />
-                <EditIcon />
+                <DeleteIcon
+                  className={classes.deleteColor}
+                  onClick={() => deleteProduct(product._id)}
+                />
+                <Link href={`/dashboard/product/edit/${product._id}`} underline="none">
+                  <EditIcon className={classes.editColor} />
+                </Link>
               </TableCell>
             </TableRow>
           ))}
