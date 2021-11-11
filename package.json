@@ -31,7 +31,7 @@
     "backend": "nodemon App.js",
     "frontend": "npm start --prefix Abnaas",
     "start": "concurrently \"npm run backend\" \"npm run frontend\" ",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Client && npm run build --prefix Client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Abnaas && npm run build --prefix Abnaas"
   },
   "author": "",
   "license": "ISC"

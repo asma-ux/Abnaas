@@ -31,9 +31,9 @@ App.use("/vendor", vendorRouter);
 App.use("/category", categoryRouter);
 App.use("/orders", orderRouter);
 
-App.use(Express.static("Client/build"));
+App.use(Express.static("Abnaas/build"));
 App.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "Client", "build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "Abnaas", "build", "index.html"));
 });
 
 const PORT = process.env.PORT;
