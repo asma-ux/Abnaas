@@ -13,7 +13,7 @@ import {
 
 // ----------------------------------------------------------------------
 
-export default function DashboardApp() {
+function Dashboardapp() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:8000/products`).then((res) => console.log(res));
@@ -43,3 +43,5 @@ export default function DashboardApp() {
     </Page>
   );
 }
+
+export default Dashboardapp;

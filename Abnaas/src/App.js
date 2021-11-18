@@ -10,7 +10,7 @@ import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
 
 // ----------------------------------------------------------------------
 
-function App() {
+function app() {
   return (
     <ThemeConfig>
       <ScrollToTop />
@@ -22,4 +22,4 @@ function App() {
   );
 }
 
-export default App;
+export default app;
