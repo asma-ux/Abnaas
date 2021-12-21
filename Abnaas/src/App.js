@@ -16,8 +16,8 @@ function app() {
       <ScrollToTop />
       <GlobalStyles />
       <BaseOptionChartStyle />
-      {/* <Router /> */}
-      <NewRoutes />
+      <Router />
+      {/* <NewRoutes /> */}
     </ThemeConfig>
   );
 }

@@ -46,6 +46,23 @@ export default function User() {
     axios.get(`http://localhost:8000/products`).then((res) => setProducts(res.data.product));
   });
 
+  function update(e) {
+    e.preventDefault();
+    console.log(products.image);
+    const formData = new FormData();
+    formData.append('name', products.name);
+    formData.append('price', products.price);
+    formData.append('quantity', products.quantity);
+    formData.append('description', products.description);
+    formData.append('commission', products.commission);
+    formData.append('image', products.image);
+
+    axios
+      .put(`http://localhost:8000/products/${id}`, formData)
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e.response.data.message));
+  }
+
   function deleteProduct(id) {
     axios.delete(`http://localhost:8000/products/${id}`).then((res) => console.log(res));
   }
